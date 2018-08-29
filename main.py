@@ -116,7 +116,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
                                feed_dict={input_image: image,
                                           correct_label: label,
                                           keep_prob: 0.5,
-                                          learning_rate: 0.001})
+                                          learning_rate: 0.0005})
             print(loss)
         print('---')
 tests.test_train_nn(train_nn)
@@ -149,7 +149,7 @@ def run():
         input_image, keep_prob, vgg_layer3_out, vgg_layer4_out, vgg_layer7_out = load_vgg(sess, vgg_path)
         layer_ouput = layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes)
 
-        epochs = 3
+        epochs = 5
         batch_size = 5
         correct_label = tf.placeholder(tf.float32, shape=[None, None, None, num_classes], name='correct_label')
         learning_rate = tf.placeholder(tf.float32, shape=[], name='learning_rate')
